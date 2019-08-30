@@ -1,0 +1,42 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Canvas</title>
+    <style>
+      body {
+        margin: 0%;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCancas"> </canvas>
+    <script>
+      let canvas = document.querySelector('#myCancas');
+      let width = window.innerWidth;
+      canvas.width = window.innerWidth;
+      let height = window.innerHeight;
+      canvas.height = window.innerHeight;
+      var ctx = canvas.getContext('2d');
+      ctx.fillStyle = 'rgb(255, 255, 255)';
+      ctx.fillRect(0, 0, width, height);
+      // ctx.fillStyle = 'rgb(0, 255, 0)';
+      // ctx.fillRect(75, 75, 100, 100);
+      // ctx.fillStyle = 'rgba(255, 0, 255, 0.75)';
+      // ctx.fillRect(25, 100, 175, 50);
+      ctx.fillStyle = 'black';
+      ctx.fillRect(0, 0, width, height);
+      ctx.lineWidth = 1;
+      ctx.font = '36px arial';
+      ctx.fillText('Canvas text', 50, 50);
+      let img = new Image();
+      img.src =
+        'https://raw.githubusercontent.com/mdn/learning-area/master/javascript/apis/drawing-graphics/getting-started/firefox.png';
+      img.onload = function() {
+        ctx.drawImage(img, 20, 20, 185, 175, 50, 50, 185, 175);
+      };
+    </script>
+  </body>
+</html>

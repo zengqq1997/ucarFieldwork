@@ -1,0 +1,89 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>随机笑话</title>
+    <style type="">
+      body {
+        font-family: helvetica, sans-serif;
+        width: 350px;
+        border: 1px solid;
+        padding: 1em;
+      }
+
+      label {
+        font-weight: bold;
+      }
+
+      div {
+        padding-bottom: 20px;
+      }
+
+      input[type="text"] {
+        padding: 5px;
+        width: 150px;
+      }
+
+      p {
+        background: #ffc125;
+        color: #5e2612;
+        padding: 10px;
+        visibility: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+        <label for="name" id="labelName">请输入一个名字：</label>
+        <input type="url" name="name" id="name" placeholder="输入" />
+    </div>
+    <div>
+        <label for="cn" id="labelCn">中国</label>
+        <input type="radio" name="country" id="cn" onclick="laugugeCn()" checked />
+        <label for="us" id="labelUs">美国</label>
+        <input type="radio" name="country" id="us" onclick="laugugeUs()" />
+    </div>
+    <div>
+        <input type="button" value="随机" id="btn" onclick="creat()" />
+    </div>
+    <p id="text"></p>
+    <script>
+      const labelName = document.querySelector("#labelName");
+      const labelCn = document.querySelector("#labelCn");
+      const labelUs = document.querySelector("#labelUs");
+      const btn = document.querySelector("#btn");
+      const text = document.querySelector("#text");
+      const name = document.querySelector("#name");
+      name.focus();
+      content = "小明在家里吃饭";
+      function laugugeCn() {
+        labelName.textContent = "请输入一个名字";
+        name.placeholder = "输入";
+        labelCn.textContent = "中国";
+        labelUs.textContent = "美国";
+        btn.value = "随机";
+        name.focus();
+      }
+      function laugugeUs() {
+        labelName.textContent = "Please enter a name";
+        name.placeholder = "input";
+        labelCn.textContent = "China";
+        labelUs.textContent = "US";
+        btn.value = "Random";
+        name.focus();
+      }
+
+      function creat() {
+        if (name.value !== "") {
+          userName = name.value;
+          content = content.replace("小明", userName);
+        }
+        name.value="";
+        text.textContent = content;
+        content = "小明在家里吃饭";
+        text.style.visibility = "visible";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <title>Simple setInterval clock</title>
+    <style>
+        p {
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="start">开始</button>
+    <button id="stop">停止</button>
+    <button id="reset">重置</button>
+    <p class="clock"></p>
+    <script>
+        const start = document.querySelector('#start');
+        const stop = document.querySelector('#stop');
+        const reset = document.querySelector('#reset');
+        const p1= document.createElement('p');
+        p1.textContent='00:00:00';
+        document.body.appendChild(p1);
+        let timeOut1;
+        let timeOut2;
+        let time;
+        let startTime=0;
+        let stopTime=0;
+        let stime,shour,sseconds,smin;
+        start.addEventListener('click',function(){
+                startTime = Date.now();
+                timeOut1 = setInterval(function () {
+                    time = Date.now() - startTime;
+                    console.log(time);
+                    time = Math.floor(time / 1000);
+                    hour = Math.floor(time / 3600);
+                    min = Math.floor((time - hour * 3600) / 60);
+                    seconds = Math.floor((time - hour * 3600 - min * 60));
+                    if (hour < 10) {
+                        hour = '0' + hour;
+                    }
+                    if (min < 10) {
+                        min = '0' + min;
+                    }
+                    if (seconds < 10) {
+                        seconds = '0' + seconds;
+                    }
+                    p1.textContent = hour + ':' + min + ':' + seconds;
+                }, 1000);
+            start.disabled=true;
+        });
+        stop.addEventListener('click',function(){
+            clearInterval(timeOut1);
+        });
+        reset.addEventListener('click',function(){
+            p1.textContent='00:00:00';
+            start.disabled=false;
+        })
+        function displayTime() {
+            let date = new Date();
+            let time = date.toLocaleTimeString();
+            document.querySelector('.clock').textContent = time;
+        }
+        displayTime();
+        const createClock = setInterval(displayTime, 1000);
+    </script>
+</body>
+
+</html>

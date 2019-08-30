@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Show video box example</title>
+    <style>
+      div {
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        width: 480px;
+        height: 380px;
+        border-radius: 10px;
+        background-color: #eee;
+        background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.1));
+      }
+      .hidden {
+        left: -50%;
+      }
+      .showing {
+        left: 50%;
+      }
+      div video {
+        display: block;
+        width: 400px;
+        margin: 40px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <button>Display video</button>
+
+    <div class="hidden">
+      <video>
+        <source src="" type="video/mp4">
+        <source src="" type="video/webm">
+        <p>Your browser doesn't support HTML5 video. Here is a <a href="rabbit320.mp4">link to the video</a> instead.</p> 
+      </video>
+    </div>
+
+    <script>
+      var btn = document.querySelector('button');
+      var videoBox = document.querySelector('div');
+      var video = document.querySelector('video');
+      btn.onclick = function() {
+        videoBox.setAttribute('class','showing');
+      }
+      videoBox.onclick = function() {
+        videoBox.setAttribute('class','hidden');
+      };
+      function play(){
+          console.log(1111)
+      }
+      video.onclick = function() {
+        play();
+      };
+      
+    </script>
+  </body>
+</html>
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Random color example — event handler property</title>
+    <style>
+      button {
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <button>Change color</button>
+    <script>
+      var btn = document.querySelector('button');
+      function random(number) {
+        return Math.floor(Math.random()*number);
+      }
+    //   function bgChange() {
+    //     var rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+    //     document.body.style.backgroundColor = rndCol;
+    //   }
+    function bgChange(e) {
+            var rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+            e.target.style.backgroundColor = rndCol;
+            console.log(e);
+        }  
+      btn.onmouseover  = bgChange;    
+      btn.onmouseout = bgChange;
+    </script>
+  </body>
+</html> -->
+<!--消息盒子 
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Function start</title>
+    <style>
+      .msgBox {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 200px;
+        background: #eee;
+      }
+      .msgBox p {
+        line-height: 1.5;
+        padding: 10px 20px;
+        color: #333;
+      }
+      .msgBox button {
+        background: none;
+        border: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 1.1rem;
+        color: #aaa;
+      }
+    </style>
+  </head>
+  <body>
+    <button>Display message box</button>
+
+    <script>
+      function displayMessage(val) {
+            var html = document.querySelector('html');
+
+            var panel = document.createElement('div');
+            panel.setAttribute('class', 'msgBox');
+            html.appendChild(panel);
+
+            var msg = document.createElement('p');
+            msg.textContent = val;
+            panel.appendChild(msg);
+
+            var closeBtn = document.createElement('button');
+            closeBtn.textContent = 'x';
+            panel.appendChild(closeBtn);
+
+            closeBtn.onclick = function () {
+                panel.parentNode.removeChild(panel);
+            }
+        }
+        let btn = document.querySelector('button');
+        btn.onclick = function () {
+            displayMessage('Woo, this is a different message!');
+        };
+    </script>
+  </body>
+</html> -->

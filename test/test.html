@@ -1,0 +1,192 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <p>this is my page</p>
+  <script>
+    // let promise= fetch('https://raw.githubusercontent.com/mdn/learning-area/master/javascript/asynchronous/promises/coffee.jpg');
+    // let promise1=promise.then(response=>response.blob());
+    // let promise3=promise1.then(myBlob=>{
+    //   let url=URL.createObjectURL(myBlob);
+    //   let img=document.createElement('img');
+    //   img.src=url;
+    //   document.body.appendChild(img);
+    // });
+    // fetch('https://raw.githubusercontent.com/mdn/learning-area/master/javascript/asynchronous/promises/coffee.jpg').then(response=>response.blob()).then(myBlob=>{
+    //   let url=URL.createObjectURL(myBlob);
+    //   let img = document.createElement('img');
+    //   img.src=url;
+    //   document.body.appendChild(img);
+    // }).catch(e=>{
+    //   console.log('fail'+e.message);
+    // });
+    // let a=fetch('https://raw.githubusercontent.com/mdn/learning-area/master/javascript/asynchronous/promises/tea.jpg');
+    // let b=fetch('https://github.com/mdn/learning-area/blob/master/javascript/asynchronous/promises/description.txt')
+    // let c= fetch('https://raw.githubusercontent.com/mdn/learning-area/master/javascript/asynchronous/promises/coffee.jpg');
+    // Promise.all([a,b,c]).then(val=>{
+      
+    // })
+    console.log('111');
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+<!-- <html>
+
+<head>
+
+</head>
+
+<body>
+
+  <input type="button" onclick="disp_prompt()" value="Display a prompt box" />
+  <label for="theme">Select theme: </label>
+  <select id="theme">
+    <option value="white">White</option>
+    <option value="black">Black</option>
+  </select>
+
+  <h1>This is my website</h1>
+  <script type="text/javascript" defer>
+    // function disp_prompt()
+    //   {
+    //   var name=prompt("Please enter your name","")
+    //   if (name!=null && name!=" ")
+    //     {
+    //     document.write("Hello " + name + "!")
+    //     }
+    //   }
+    //   var person={};
+    //   Object.defineProperty(person,"name",{
+    //     writable:true,
+    //     value :"qw"
+    //   })
+    //   alert(person.name)
+    //   person.name="we"
+    //   alert(person.name)
+    //   Object.defineProperty(person,"name",{
+    //     writable:false,
+    //     value :"qw"
+    //   })
+    //   var o = {
+    //   a: 2,
+    //   m: function(){
+    //     return this.a + 1;
+    //   }
+    // };
+
+    // console.log(o.m()); // 3
+    // // 当调用 o.m 时，'this' 指向了 o.
+
+    // var p = Object.create(o);
+    // // p是一个继承自 o 的对象
+
+    // // p.a = 4; // 创建 p 的自身属性 'a'
+    // console.log(p.a); // 5
+    // // 调用 p.m 时，'this' 指向了 p
+    // // 又因为 p 继承了 o 的 m 函数
+    // // 所以，此时的 'this.a' 即 p.a，就是 p 的自身属性 'a'
+    // function doSomething(){}
+    // doSomething.foo = "bar"; // add a property onto the prototype
+    // var doSomeInstancing = new doSomething();
+    // doSomeInstancing.prop = "some value"; // add a property onto the object
+    // console.log( doSomeInstancing.foo);
+    // class Polygon {
+    //   constructor(height, width) {
+    //     this.height = height;
+    //     this.width = width;
+    //   }
+    // }
+
+    // class Square extends Polygon {
+    //   constructor(sideLength) {
+    //     super(sideLength, sideLength);
+    //   }
+    //   get area() {
+    //     return this.height * this.width;
+    //   }
+    //   // set sideLength(newLength) {
+    //   //   this.height = newLength;
+    //   //   this.width = newLength;
+    //   // }
+    // }
+
+    // var square = new Square(2);
+    // console.log(square.area)
+    function A(a) {
+      this.varA = a;
+    }
+
+    // 以上函数 A 的定义中，既然 A.prototype.varA 总是会被 this.varA 遮蔽，
+    // 那么将 varA 加入到原型（prototype）中的目的是什么？
+    A.prototype = {
+      varA: null,
+      /*
+      既然它没有任何作用，干嘛不将 varA 从原型（prototype）去掉 ? 
+      也许作为一种在隐藏类中优化分配空间的考虑 ?
+      https://developers.google.com/speed/articles/optimizing-javascript 
+      如果varA并不是在每个实例中都被初始化，那这样做将是有效果的。
+      */
+      doSomething: function () {
+        console.log(11111)
+      }
+    }
+
+    function B(a, b) {
+      A.call(this, a);
+
+    }
+    B.prototype = Object.create(A.prototype, {
+      varB: {
+        value: 2222,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      },
+      doSomething: {
+        value: function () { // override
+          A.prototype.doSomething.apply(this, arguments);
+          // call super
+          console.log(22222)
+          // ...
+        },
+        enumerable: true,
+        configurable: true,
+        writable: true
+      }
+    });
+    B.prototype.constructor = B;
+
+    var b = new B(1, 2);
+    alert(b.varB);
+    let myNumber = '500'; // oops, this is still a string
+    console.log(typeof myNumber);
+    myNumber = 500; // much better — now this is a number
+    console.log(typeof myNumber);
+    var select = document.querySelector('select');
+    var html = document.querySelector('html');
+    document.body.style.padding = '10px';
+
+    function update(bgColor, textColor) {
+      html.style.backgroundColor = bgColor;
+      html.style.color = textColor;
+    }
+
+    select.onclick = function () {
+      (select.value === 'black') ? update('black', 'white') : update('white', 'black');
+    }
+  </script>
+</body>
+
+</html> -->
